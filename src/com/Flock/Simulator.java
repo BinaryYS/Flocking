@@ -45,12 +45,12 @@ public class Simulator extends java.applet.Applet implements Runnable {
 	String control = "";
 	boolean suspend = false;
 
-	Button addDocuments = new Button("Ìí¼ÓÎÄµµ");
-	Button beginning = new Button("¿ªÊ¼¾ÛÀà");
-	Button startBtn = new Button("¿ªÊ¼");
-	Button suspendBtn = new Button("ÔÝÍ£");
-	Button stopBtn = new Button("Í£Ö¹");
-	Button exitBtn = new Button("ÍË³ö");
+	Button addDocuments = new Button("??????");
+	Button beginning = new Button("???????");
+	Button startBtn = new Button("???");
+	Button suspendBtn = new Button("???");
+	Button stopBtn = new Button("??");
+	Button exitBtn = new Button("???");
 
 	TextField birdSpeedText = new TextField();
 	TextField separateDistText = new TextField();
@@ -60,11 +60,11 @@ public class Simulator extends java.applet.Applet implements Runnable {
 
 	JComboBox selectBird = new JComboBox();
 
-	Button setBtn = new Button("ÉèÖÃ");
-	Label flockingSpeedLabel = new Label("¾ÛÀàËÙ¶È£º");
-	Label separateDistanceLabel = new Label("·Ö¸ô°ë¾¶£º");
-	Label detectDistanceLabel = new Label("¼ì²â°ë¾¶£º");
-	Label addNum = new Label("Ìí¼ÓÊýÁ¿£º");
+	Button setBtn = new Button("????");
+	Label flockingSpeedLabel = new Label("????????");
+	Label separateDistanceLabel = new Label("???????");
+	Label detectDistanceLabel = new Label("??????");
+	Label addNum = new Label("?????????");
 	private boolean isPause = false;
 
 	public void init() {
@@ -81,7 +81,7 @@ public class Simulator extends java.applet.Applet implements Runnable {
 		parameter.setBackground(new Color(245, 245, 245));
 
 		// act.add(addBirds);
-		openDia = new FileDialog(openDia, "Ìí¼Ó¾ÛÀàÎÄ¼þ", FileDialog.LOAD);
+		openDia = new FileDialog(openDia, "?????????", FileDialog.LOAD);
 		AddDocumentsListener addDocumentsListener = new AddDocumentsListener();
 		addDocuments.addActionListener(addDocumentsListener);
 		act.add(addDocuments);
@@ -117,14 +117,14 @@ public class Simulator extends java.applet.Applet implements Runnable {
 		parameter.add(setBtn);
 		parameter.add(addNum);
 		parameter.add(addNumText);
-		selectBird.addItem("ÂÌÉ«");
-		selectBird.addItem("»ÆÉ«");
-		selectBird.addItem("À¶É«");
+		selectBird.addItem("???");
+		selectBird.addItem("???");
+		selectBird.addItem("???");
 		ItemListen itemListener = new ItemListen();
 		selectBird.addItemListener(itemListener);
 		parameter.add(selectBird);
 		// parameter.add(addBirds);
-		// ³õÊ¼»¯²ÎÊýºÍÄñ
+		// ?????????????
 		numberOfGreenBirds = DEFAULT_NUMBER_GREEN;
 		numberOfBlueBirds = DEFAULT_NUMBER_BLUE;
 		numberOfYellowBirds = DEFAULT_NUMBER_YELLOW;
@@ -138,7 +138,7 @@ public class Simulator extends java.applet.Applet implements Runnable {
 
 		flock = new Flock();
 
-		// ÏÔÊ¾
+		// ???
 		setLayout(new BorderLayout());
 		add("Center", canvas);
 		add("East", act);
@@ -184,7 +184,7 @@ public class Simulator extends java.applet.Applet implements Runnable {
 		}
 	}
 
-	public void setSuspend(boolean suspend) { // ÓÃÓÚÔÝÍ£
+	public void setSuspend(boolean suspend) { // ???????
 		if (!suspend) {
 			synchronized (control) {
 				control.notifyAll();
@@ -260,8 +260,8 @@ public class Simulator extends java.applet.Applet implements Runnable {
 	class AddDocumentsListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			openDia.setVisible(true);
-			String dirPath = openDia.getDirectory();// »ñÈ¡ÎÄ¼þÂ·¾¶
-			String fileName = openDia.getFile();// »ñÈ¡ÎÄ¼þÃû³Æ
+			String dirPath = openDia.getDirectory();// ??????·??
+			String fileName = openDia.getFile();// ??????????
 			dirPath = dirPath.replaceAll("\\\\", "/");
 			System.out.println(dirPath + fileName);
 			fileList.add(dirPath + fileName);
@@ -271,14 +271,14 @@ public class Simulator extends java.applet.Applet implements Runnable {
 		}
 	}
 
-	class BeginListener implements ActionListener {// ¿ªÊ¼¾ÛÀà°´Å¥¼àÌý
+	class BeginListener implements ActionListener {// ????????????
 		public void actionPerformed(ActionEvent e) {
             
-			if (fileList.size() == 0) {// Èç¹ûÃ»´ò¿ªÎÄµµ£¬Ôò¿ªÊ¼Ä£Äâ¾ÛÀà
+			if (fileList.size() == 0) {// ???û????????????????
 				Flock.separateDistance = separateDistance;
 				Flock.detectDistance = detectDistance;
 
-			} else if (fileList.size() > 0) {// Èç¹û´ò¿ªÎÄµµ£¬Ôò¿ªÊ¼ÎÄµµ¾ÛÀà
+			} else if (fileList.size() > 0) {// ????????????????????
 				Flock.separateDistance = separateDistance;
 				Flock.detectDistance = detectDistance;
 				clearCanvas();
@@ -288,7 +288,7 @@ public class Simulator extends java.applet.Applet implements Runnable {
 						try {
 							double result = CosineSimilarAlgorithm.getSimilarity(ReadFiles.readFiles(fileList.get(i)),
 									ReadFiles.readFiles(fileList.get(j)));
-							System.out.println(i + "ºÍ" + j + "µÄÏàËÆ¶ÈÎª"+result);
+							System.out.println(i + "??" + j + "????????"+result);
 							if (result >= 0.4) {
 								reultArr[i][j] = 1;
 							} else {
@@ -314,7 +314,7 @@ public class Simulator extends java.applet.Applet implements Runnable {
 		}
 	}
 
-	class SuspendListener implements ActionListener {// ÔÝÍ£°´Å¥¼àÌý
+	class SuspendListener implements ActionListener {// ??????????
 		public void actionPerformed(ActionEvent e) {
 			count += 1;
 			// System.out.println(count);
@@ -326,27 +326,27 @@ public class Simulator extends java.applet.Applet implements Runnable {
 		}
 	}
 
-	class ExitListener implements ActionListener {// ÍË³ö°´Å¥¼àÌý
+	class ExitListener implements ActionListener {// ??????????
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);
 		}
 	}
 
-	class SetListener implements ActionListener {// ÉèÖÃ°´Å¥¼àÌý
+	class SetListener implements ActionListener {// ???ð??????
 		public void actionPerformed(ActionEvent e) {
-			if (!"".equals(birdSpeedText.getText())) {// ËÙ¶È
+			if (!"".equals(birdSpeedText.getText())) {// ???
 				speed = Integer.parseInt(birdSpeedText.getText());
 				flock.setBirdParameters(Color.green, speed);
 				flock.setBirdParameters(Color.blue, speed);
 				flock.setBirdParameters(Color.yellow, speed);
 			}
-			if (!"".equals(separateDistText.getText())) {// ·Ö¸ô¾àÀë
+			if (!"".equals(separateDistText.getText())) {// ???????
 				separateDistance = Integer.parseInt(separateDistText.getText());
 				if (detectDistance < separateDistance) {
 					detectDistance = separateDistance;
 				}
 			}
-			if (!"".equals(detectDistText.getText())) {// ¼ì²â¾àÀë
+			if (!"".equals(detectDistText.getText())) {// ??????
 				detectDistance = Integer.parseInt(detectDistText.getText());
 				if (detectDistance < separateDistance) {
 					separateDistance = detectDistance;
@@ -356,19 +356,19 @@ public class Simulator extends java.applet.Applet implements Runnable {
 		}
 	}
 
-	class StartListener implements ActionListener {// ¿ªÊ¼Ä£Äâ¼àÌý
+	class StartListener implements ActionListener {// ?????????
 		public void actionPerformed(ActionEvent e) {
 			begin();
 		}
 	}
 
-	class StopListener implements ActionListener {// Í£Ö¹°´Å¥¼àÌý
+	class StopListener implements ActionListener {// ?????????
 		public void actionPerformed(ActionEvent e) {
 			stop();
 		}
 	}
 
-	class ItemListen implements ItemListener {// ÏÂÀ­¿ò¼àÌý
+	class ItemListen implements ItemListener {// ?????????
 
 		public void itemStateChanged(ItemEvent e) {
 
