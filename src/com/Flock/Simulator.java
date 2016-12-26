@@ -45,12 +45,12 @@ public class Simulator extends java.applet.Applet implements Runnable {
 	String control = "";
 	boolean suspend = false;
 
-	Button addDocuments = new Button("??????");
-	Button beginning = new Button("???????");
-	Button startBtn = new Button("???");
-	Button suspendBtn = new Button("???");
+	Button addDocuments = new Button("????");
+	Button beginning = new Button("????");
+	Button startBtn = new Button("??");
+	Button suspendBtn = new Button("??");
 	Button stopBtn = new Button("??");
-	Button exitBtn = new Button("???");
+	Button exitBtn = new Button("??");
 
 	TextField birdSpeedText = new TextField();
 	TextField separateDistText = new TextField();
@@ -260,7 +260,7 @@ public class Simulator extends java.applet.Applet implements Runnable {
 	class AddDocumentsListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			openDia.setVisible(true);
-			String dirPath = openDia.getDirectory();// ??????·??
+			String dirPath = openDia.getDirectory();// ?????????
 			String fileName = openDia.getFile();// ??????????
 			dirPath = dirPath.replaceAll("\\\\", "/");
 			System.out.println(dirPath + fileName);
@@ -274,7 +274,7 @@ public class Simulator extends java.applet.Applet implements Runnable {
 	class BeginListener implements ActionListener {// ????????????
 		public void actionPerformed(ActionEvent e) {
             
-			if (fileList.size() == 0) {// ???û????????????????
+			if (fileList.size() == 0) {// ????????????????????
 				Flock.separateDistance = separateDistance;
 				Flock.detectDistance = detectDistance;
 
@@ -332,7 +332,7 @@ public class Simulator extends java.applet.Applet implements Runnable {
 		}
 	}
 
-	class SetListener implements ActionListener {// ???ð??????
+	class SetListener implements ActionListener {// ??????????
 		public void actionPerformed(ActionEvent e) {
 			if (!"".equals(birdSpeedText.getText())) {// ???
 				speed = Integer.parseInt(birdSpeedText.getText());
